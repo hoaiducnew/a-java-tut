@@ -15,8 +15,12 @@ public class ParkingCash {
   }
 
   public void close() {
-    System.out.printf("Closing accounting");
-    System.out.printf("The total ammount is : %d", cash);
-    cash = 0;
+    System.out.printf("Closing accounting. ");
+    long totalAmount;
+    synchronized (this) {
+      totalAmount = cash;
+      cash = 0;
+    }
+    System.out.printf("The total ammount is : %d", totalAmount);
   }
 }

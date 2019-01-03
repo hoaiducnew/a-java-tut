@@ -2,7 +2,7 @@ package chapter02.recipe01.synchronization.fixed;
 
 public class ParkingStats {
 
-  private final Object controlCars, controlMotorcybles;
+  private final Object controlCars, controlMotorcycles;
   
   private long numberCars;
   private long numberMotorcycles;
@@ -14,7 +14,7 @@ public class ParkingStats {
     numberMotorcycles = 0;
     
     controlCars = new Object();
-    controlMotorcybles = new Object();
+    controlMotorcycles = new Object();
     
     this.cash = cash;
   }
@@ -33,24 +33,28 @@ public class ParkingStats {
   }
 
   public void motoComeIn() {
-    synchronized (controlMotorcybles) {
+    synchronized (controlMotorcycles) {
       numberMotorcycles++;
     }
   }
 
   public void motoGoOut() {
-    synchronized (controlMotorcybles) {
+    synchronized (controlMotorcycles) {
       numberMotorcycles--;
     }
     cash.vehiclePay();
   }
 
   public long getNumberCars() {
-    return numberCars;
+    synchronized (controlCars) {
+      return numberCars;
+    }    
   }
 
   public long getNumberMotorcycles() {
-    return numberMotorcycles;
+    synchronized (controlMotorcycles) {
+      return numberMotorcycles;
+    }
   }
 
 }
