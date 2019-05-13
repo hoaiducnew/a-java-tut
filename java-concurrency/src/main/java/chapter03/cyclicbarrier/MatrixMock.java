@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class MatrixMock {
 
-  private final int data[][];
+  private final int[][] data;
 
   public MatrixMock(int size, int length, int number) {
     int counter = 0;

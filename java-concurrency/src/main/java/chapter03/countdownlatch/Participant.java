@@ -4,11 +4,11 @@ import java.util.concurrent.TimeUnit;
 
 public class Participant implements Runnable {
 
-  private Videoconference conference;
+  private VideoConference conference;
 
   private String name;
 
-  public Participant(Videoconference conference, String name) {
+  public Participant(VideoConference conference, String name) {
     this.conference = conference;
     this.name = name;
   }

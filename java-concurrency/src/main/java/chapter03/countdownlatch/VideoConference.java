@@ -2,11 +2,11 @@ package chapter03.countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
 
-public class Videoconference implements Runnable {
+public class VideoConference implements Runnable {
 
   private final CountDownLatch controller;
 
-  public Videoconference(int number) {
+  public VideoConference(int number) {
     controller = new CountDownLatch(number);
   }
 
@@ -27,6 +27,4 @@ public class Videoconference implements Runnable {
       e.printStackTrace();
     }
   }
-
-
 }

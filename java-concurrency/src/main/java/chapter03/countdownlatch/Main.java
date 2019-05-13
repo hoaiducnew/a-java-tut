@@ -3,7 +3,7 @@ package chapter03.countdownlatch;
 public class Main {
 
   public static void main(String[] args) {
-    Videoconference conference = new Videoconference(10);
+    VideoConference conference = new VideoConference(10);
     Thread threadConference = new Thread(conference);
     threadConference.start();
 

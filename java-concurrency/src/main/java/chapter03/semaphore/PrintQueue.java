@@ -14,10 +14,7 @@ public class PrintQueue {
 
   public PrintQueue() {
     semaphore = new Semaphore(3);
-    freePrinters = new boolean[3];
-    for (int i = 0; i < 3; i++) {
-      freePrinters[i] = true;
-    }
+    freePrinters = new boolean[] {true, true, true};
     lockPrinters = new ReentrantLock();
   }
 
@@ -28,8 +25,7 @@ public class PrintQueue {
       int assignedPrinter = getPrinter();
 
       Long duration = (long) (Math.random() * 10);
-      System.out.printf("%s - %s: PrintQueue: Printing a Job in Printer %d during %d seconds\n",
-          new Date(), Thread.currentThread().getName(), assignedPrinter, duration);
+      System.out.printf("%s - %s: PrintQueue: Printing a Job in Printer %d during %d seconds\n", new Date(), Thread.currentThread().getName(), assignedPrinter, duration);
       TimeUnit.SECONDS.sleep(duration);
       
       freePrinters[assignedPrinter] = true;
